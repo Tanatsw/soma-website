@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOMA TECHNOLOGIES </title>
+  <link rel="icon" type="image/png" href="images/ICON.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ==== RESET & BASE ==== */
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    
+    :root{
+          /* Typography */
+          font-family:'DM Sans',sans-serif;color:var(--black);background:var(--white);overflow-x:hidden;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --yellow:#4f99af;--yd:#008bcc;--black:#5e5e5e;--white:#fff;--ow:#f5f4f0;--wg:#e8e4dc;--muted:#666;--blue:#3b82f6;
+
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+}
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; border-radius: 8px; }
+
+    /* ==== ANIMATED BACKGROUND ==== */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+      opacity: 0.1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.1; }
+      90% { opacity: 0.1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+      filter: blur(40px);
+      animation: drift 30s infinite ease-in-out;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(100px, -50px) scale(1.1); }
+      50% { transform: translate(-50px, 100px) scale(0.9); }
+      75% { transform: translate(-100px, -100px) scale(1.05); }
+    }
+
+      /* ==== HEADER ==== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #6366f1, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+     .nav-actions{display:flex;gap:8px;align-items:center;}
+.btn-donate{font-family:'Space Mono',monospace;font-size:12px;background:transparent;color:var(--black);padding:9px 14px;border:2px solid var(--black);cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+.btn-donate:hover{background:var(--black);color:var(--white);}
+.cart-btn{font-family:'Space Mono',monospace;font-size:12px;background:var(--yellow);color:var(--black);padding:10px 15px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;position:relative;}
+.cart-count{position:absolute;top:-7px;right:-7px;background:var(--black);color:var(--yellow);font-size:9px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;}
+.nav-cta{font-family:'Space Mono',monospace;font-size:12px;background:var(--black);color:var(--white);padding:10px 18px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:background .2s;}
+.nav-cta:hover{background:#333;}
+   
+
+    .hero { 
+        background-color: #0a0a0a;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 4rem;
+    }
+
+    .hero-content {
+      margin-top: 100px;
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero-video {
+      flex: 1;
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 500px;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(181, 148, 224, 0.3);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem); 
+      font-weight: 300; 
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 .static-text {
+      background: linear-gradient(45deg, #ffffff, #d1d5db);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 .changing-text {
+      background: linear-gradient(45deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      min-width: 300px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #9ca3af;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background:   #29282b;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(50, 50, 53, 0.3);
+    }
+
+    .btn-primary:hover {  
+      background:   #4e555c;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2); 
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero h1 .changing-text {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @media (max-width: 968px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero h1 .changing-text {
+        min-width: auto;
+        display: block;
+        margin-top: 0.5rem;
+      }
+
+      .hero-video {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    /* ==== COUNTDOWN ==== */
+    .countdown-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      background:rgb(0, 0, 0);
+    }
+
+     
+/* Dashboard Preview */
+ 
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dash-g{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;}
+.dash-s{color:var(--muted);font-size:13px;margin-top:3px;margin-bottom:22px;}
+.metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.mc{background:var(--white);border:1px solid #5992a3;border-radius:10px;padding:17px;}
+.mc-lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:9px;}
+.mc-val{font-family:'Playfair Display',serif;color: #000; font-size:38px;font-weight:900;line-height:1;}
+.mc-chg{font-family:'Space Mono',monospace;font-size:10px;color:#2a9d5c;margin-top:5px;}
+.mc-y{background:var(--yellow);}
+.mc-f{background:var(--white);border:1px solid #e0ddd5;border-radius:10px;padding:17px;display:flex;align-items:flex-start;gap:12px;}
+.fi{width:58px;height:58px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;background:linear-gradient(135deg,#2d6a4f,#40916c);}
+.ft{font-family:'Space Mono',monospace;font-size:9px;background:rgb(21, 26, 10);padding:3px 8px;border-radius:20px;display:inline-block;margin-bottom:5px;}
+.ftt{font-family:'Playfair Display',serif;color: #000; font-size:13px;font-weight:700;line-height:1.3;}
+
+
+
+    /* ==== SECTIONS ==== */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(45deg, #ffffff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .feat-sec{ padding:96px 60px;position:relative;overflow:hidden;}
+.feat-bg{position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:24px 24px;}
+.feat-in{position:relative;max-width:1100px;margin:0 auto;}
+.feat-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:20px;}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:2px solid var(--black);}
+.fi-item{background:solid #5992a3;padding:32px 26px;border-right:2px solid var(--black);transition:background .2s;}
+.fi-item:last-child{border-right:none;} 
+.fi-item:hover{background:var(--yellow);}
+.fi-ico{width:40px;height:40px;border:2px solid var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:16px;}
+.fi-t{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;}
+.fi-d{font-size:13px;line-height:1.6;color:#555;}
+
+.stats-banner{background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:space-around;padding:36px 60px;gap:40px;flex-wrap:wrap; margin-bottom: 50px;}
+.si{text-align:center;}
+.sn{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--yellow);line-height:1;}
+.sl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:#aaa;margin-top:4px;}
+.sdiv{width:1px;height:52px;background:#333;}
+
+.case-sec{padding:76px 60px;}
+.btn-p{font-family:'Space Mono',monospace;font-size:13px;background:#5992a3; color:var(--white);padding:15px 24px;border:2px solid var(--black);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .2s;}
+.btn-p:hover{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
+.case-in{max-width:1100px;margin:0 auto;}
+.ccard{background:#eef5ff;border:2px solid white;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;}
+.cimg{min-height:300px;background:linear-gradient(135deg,#b8d4f0,#d4e8f5);overflow:hidden;}
+.cimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) brightness(.9) sepia(15%) hue-rotate(180deg);}
+.ccont{padding:44px 38px;display:flex;flex-direction:column;justify-content:center;}
+.ctag{font-family:'Space Mono',monospace;font-size:10px;background:var(--black);color:var(--yellow);padding:4px 12px;display:inline-block;margin-bottom:16px;width:fit-content;}
+.cti{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.2;margin-bottom:14px;}
+.cd{font-size:14px;line-height:1.7;color:#444;margin-bottom:26px;}
+
+.sug-sec{padding:96px 60px;background:black;color:var(--white);}
+.sug-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:start;}
+.sf{display:flex;flex-direction:column;gap:14px;}
+.flbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:5px;}
+.fin{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:13px 15px;outline:none;transition:border-color .2s;width:100%;}
+.fin:focus{border-color:var(--yellow);}
+.fta{min-height:115px;resize:vertical;}
+.fsel{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.fsel option{background:#1a1a1a;}
+.sbtn{font-family:'Space Mono',monospace;font-size:13px;background:var(--yellow);color:var(--black);padding:15px 22px;border:none;cursor:pointer;font-weight:700;transition:background .2s;text-align:left;}
+.sbtn:hover{background:var(--yd);}
+.sfeed{display:flex;flex-direction:column;gap:13px;max-height:580px;overflow-y:auto;}
+.scard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 20px;transition:border-color .2s;}
+.scard:hover{border-color:rgba(232,255,0,.3);}
+.sch{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.sav{width:30px;height:30px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--black);font-weight:700;font-family:'Space Mono',monospace;flex-shrink:0;}
+.san{font-size:12px;font-weight:600;color:var(--white);}
+.scat{font-family:'Space Mono',monospace;font-size:9px;padding:3px 8px;border-radius:4px;margin-left:auto;}
+.st{font-size:12px;line-height:1.6;color:rgba(255,255,255,.7);margin-bottom:10px;}
+.sv{display:flex;align-items:center;gap:10px;}
+.vb{background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-family:'Space Mono',monospace;font-size:10px;padding:5px 11px;cursor:pointer;border-radius:4px;transition:all .2s;}
+.vb:hover,.vb.voted{background:rgba(232,255,0,.12);color:var(--yellow);border-color:rgba(232,255,0,.3);}
+.stm{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);margin-left:auto;}
+
+.merch-sec{padding:96px 60px;background:black;color:var(--white);}
+.merch-in{max-width:1100px;margin:0 auto;}
+.mhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:18px;}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.mcard{background:#111;border:1px solid #222;border-radius:12px;overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer;}
+.mcard:hover{border-color:var(--yellow);transform:translateY(-4px);}
+.mimg{height:198px;overflow:hidden;background:#1a1a1a;border-bottom:1px solid #222;position:relative;display:flex;align-items:center;justify-content:center;}
+.mimg img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.mcard:hover .mimg img{transform:scale(1.05);}
+.mph{font-size:58px;color:rgba(255,255,255,.15);}
+.mbadge{position:absolute;top:9px;left:9px;background:var(--yellow);color:var(--black);font-family:'Space Mono',monospace;font-size:9px;padding:3px 8px;border-radius:4px;}
+.minfo{padding:16px;}
+.mname{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:4px;}
+.mdesc{font-size:11px;color:#666;margin-bottom:13px;line-height:1.5;}
+.mfooter{display:flex;align-items:center;justify-content:space-between;}
+.mprice{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--yellow);}
+.atc{background:var(--yellow);color:var(--black);font-family:'Space Mono',monospace;font-size:10px;padding:7px 12px;border:none;cursor:pointer;border-radius:4px;font-weight:700;transition:background .2s;}
+.atc:hover{background:var(--yd);}
+
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:flex-start;justify-content:flex-end;padding:74px 18px 18px;}
+.cart-ov.open{display:flex;}
+.cart-pan{background:var(--white);border:2px solid var(--black);border-radius:14px;width:390px;max-height:82vh;overflow-y:auto;padding:24px;}
+.cph{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.cpt{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;}
+.cpc{background:none;border:none;font-size:19px;cursor:pointer;}
+.cempty{text-align:center;padding:38px 18px;color:var(--muted);font-family:'Space Mono',monospace;font-size:12px;line-height:1.7;}
+.ci{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid #eee;}
+.cii{width:50px;height:50px;border-radius:8px;object-fit:cover;border:1px solid #eee;flex-shrink:0;background:#f0f0f0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.cii img{width:100%;height:100%;object-fit:cover;}
+.cin{font-size:13px;font-weight:600;}
+.cip{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
+.cir{margin-left:auto;background:none;border:none;color:#ccc;cursor:pointer;font-size:15px;flex-shrink:0;}
+.cir:hover{color:#e00;}
+.ctr{margin-top:16px;display:flex;justify-content:space-between;align-items:center;}
+.ctl{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
+.ctp{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
+.chkbtn{margin-top:16px;width:100%;background:var(--black);color:var(--white);font-family:'Space Mono',monospace;font-size:12px;padding:14px;border:none;cursor:pointer;transition:all .2s;}
+.chkbtn:hover{background:var(--yellow);color:var(--black);}
+
+    /* ==== DOWNLOAD SECTION ==== */
+    .download-options {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ==== FORMS ==== */
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    /* ==== ANIMATIONS ==== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4rem 2rem 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h4 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ffffff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #9ca3af;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: #9ca3af;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(45deg, #6366f1, #a855f7);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--black);color:var(--yellow);font-family:'Space Mono',monospace;font-size:12px;padding:13px 22px;border-radius:4px;z-index:300;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+    /* ==== RESPONSIVE ==== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+      
+      nav ul {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .countdown-timer {
+        gap: 1rem;
+      }
+      
+      .time-unit {
+        padding: 1rem;
+        min-width: 80px;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }  
+    
+  .insights-section {
+    padding: 6rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .insights-container {
+    margin-bottom: 6rem;
+  }
+
+  .insights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .insights-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .view-all {
+    color: #ffffff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .view-all:hover {
+    gap: 1rem;
+  }
+
+  .view-all span {
+    font-size: 1.5rem;
+  }
+
+  /* Carousel */
+  .insights-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+  }
+
+  .insights-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .insights-carousel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .insights-carousel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+
+  .insights-carousel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Insight Card */
+  .insight-card {
+    flex: 0 0 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .insight-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .insight-image {
+    width: 100%;
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+  }
+
+  .insight-content {
+    padding: 1.5rem;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .insight-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    flex-grow: 1;
+  }
+
+  .insight-date {
+    font-size: 0.75rem;
+    color: #a855f7;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .insight-author {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+
+  .insight-link {
+    font-size: 1.5rem;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .insight-card:hover .insight-link {
+    transform: translateX(8px);
+  }
+
+  /* Discoveries Section */
+  .discoveries-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .discoveries-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .discoveries-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .discovery-item {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .discovery-item a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .discovery-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .discovery-item h4 {
+    font-size: 0.95rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .discovery-date {
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+
+  /* Newsletter Box */
+  .newsletter-box {
+    grid-column: 1 / -1;
+    padding: 3rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
+    border: 2px solid rgba(168, 85, 247, 0.2);
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .newsletter-box h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsletter-box p {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .newsletter-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .newsletter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .insight-card {
+      flex: 0 0 250px;
+    }
+
+    .discoveries-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .insights-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .insights-carousel {
+      gap: 1rem;
+    }
+
+    .insight-card {
+      flex: 0 0 240px;
+    }
+
+    .discoveries-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-box {
+      padding: 2rem;
+    }
+
+    .newsletter-box h3 {
+      font-size: 1.5rem;
+    }
+
+    .insights-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .insights-section {
+      padding: 3rem 1rem;
+    }
+
+    .insight-card {
+      flex: 0 0 280px;
+    }
+
+    .insights-header h2 {
+      font-size: 1.75rem;
+    }
+
+    .discoveries-header h2 {
+      font-size: 1.75rem;
+    }
+
+    .newsletter-box h3 {
+      font-size: 1.25rem;
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="gradient-orb" style="width: 200px; height: 200px; top: 20%; left: 10%;"></div>
+    <div class="gradient-orb" style="width: 300px; height: 300px; top: 60%; right: 10%; animation-delay: -10s;"></div>
+    <div class="gradient-orb" style="width: 150px; height: 150px; bottom: 20%; left: 30%; animation-delay: -20s;"></div>
+  </div>
+
+     <!-- Header -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div  ><img src="images/img 2.png" 
+                    style="position:fixed;top: 15px; left: 20px;"``` width="150px";  ></div>
+                 <ul class="nav-links">
+                    <a href="#products">Products</a>
+    <a href="#platform">Platform</a>
+    <a href="#journal">Journal</a>
+    <a href="#merch">Merch</a>
+    <a href="#suggestions">Ideas</a>
+    <a href="#about">About</a>
+                </ul>
+             <div class="nav-actions">
+    <a href="donate.html" class="btn-donate">♥ Donate</a>
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart<span class="cart-count" id="cc">0</span></button>
+    <a href="download.html" class="nav-cta">■ Get started →</a>
+  </div>
+</nav>
+              </div>
+        </div>
+    </nav>
+ <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        <span class="static-text">The browser that</span><br>
+        <span class="changing-text" id="changingText">learns</span>
+      </h1>
+      <p>The SOMA Browser is part of the broader ecosystem, designed to make learning easier, faster, and more connected. It gives students and teachers access to study tools, and learning resources all in one secure, intelligent environment. More than a browser, A portal to possibilities..</p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Beta</a>
+        <a href="#about" class="btn btn-secondary"><i class="fas fa-info-circle"></i> Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-video">
+      <!-- Replace 'your-video.ts' with your actual video file path -->
+      <video autoplay loop muted playsinline>
+        <source src="images/Glass 3D CUB.mp4" type="video/mp2t">
+        <source src="images/Glass 3D CUB.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+<!-- STATS -->
+<div class="stats-banner">
+  <div class="si"><div class="sn">20+</div><div class="sl">Partner Schools</div></div>
+  <div class="sdiv"></div>
+  <div class="si"><div class="sn">5K+</div><div class="sl">Active Students</div></div>
+  <div class="sdiv"></div>
+  <div class="si"><div class="sn">28K</div><div class="sl">Monthly AI Sessions</div></div>
+  <div class="sdiv"></div>
+  <div class="si"><div class="sn">3</div><div class="sl">Core Products</div></div>
+  <div class="sdiv"></div>
+  <div class="si"><div class="sn">ZW</div><div class="sl">Built in Zimbabwe</div></div>
+</div>
+
+  <!-- Countdown Section -->
+  <section class="countdown-section"> 
+        <div class="dashboard-preview">
+           <h2 class="countdown-title"></h2>
+       <div class="countdown-timer" id="countdown">
+        <div class="time-unit">
+          <span class="time-number" id="days">000</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-number" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        
+        <div class="time-unit">
+          <span class="time-number" id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-number" id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+            <div class="hero-card">
+    <div class="dash-g">Good morning, Soma Community</div>
+    <div class="dash-s">Platform-wide learning insights — updated daily across all partner schools.</div>
+    <div class="metrics">
+      <div class="mc">
+        <div class="mc-lbl">Active students today</div>
+        <div class="mc-val">3,847</div>
+        <div class="mc-chg">↑ +8.2% this week</div>
+      </div>
+      <div class="mc mc-y">
+        <div class="mc-lbl">AI sessions this month</div>
+        <div class="mc-val">28K</div>
+        <div class="mc-chg">↑ +14.6% vs last month</div>
+      </div>
+      <div class="mc-f">
+        <div class="fi">🏫</div>
+        <div>
+          <div class="ft">Insight</div>
+          <div class="ftt">Avg. performance up 23% across partner schools this term</div>
+        </div>
+      </div>
+    </div>
+  </div>
+           
+    </section>
+
+  <section class="feat-sec" id="about">
+  <div class="feat-bg"></div>
+  <div class="feat-in">
+    <div class="feat-head">
+      <div>
+        <div class="sec-ey">■ Why Soma Tech <i>changes</i> everything </div>
+        <div class="sec-ti" style="margin-bottom:0;font-size:clamp(26px,3.8vw,44px);">Built for <em>clarity</em><br>Designed for action</div>
+      </div>
+      <a href="download.html" class="btn-p">■ Get started</a>
+    </div>
+    <div class="fgrid">
+      <div class="fi-item"><div class="fi-ico">◑</div><div class="fi-t">Clarity drives learning</div><p class="fi-d">Better students start with better tools — AI that is visible, trusted, and purpose-built for the African classroom and ZIMSEC curriculum.</p></div>
+      <div class="fi-item"><div class="fi-ico">⊕</div><div class="fi-t">Education is a systems problem</div><p class="fi-d">We connect the dots between students, parents, teachers, and curriculum — so no learner in Zimbabwe falls through the cracks.</p></div>
+      <div class="fi-item" style="border-right:none;"><div class="fi-ico">↗</div><div class="fi-t">Progress over perfection</div><p class="fi-d">We support real momentum — helping students across Zimbabwe move from ambition to measurable achievement, one session at a time.</p></div>
+    </div>
+  </div>
+</section>
+<!-- CASE STUDY -->
+<section class="case-sec">
+  <div class="case-in">
+    <div class="ccard">
+      <div class="cimg"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="Students" onerror="this.parentElement.innerHTML='<div style=font-size:56px;padding:60px;>🏫</div>'"></div>
+      <div class="ccont">
+        <div class="ctag">■ Case Study</div>
+        <div class="cti">Why St. Joseph's College chose Soma Tech</div>
+        <p class="cd">With fragmented data and growing reporting pressure, St. John's turned to Soma Tech to streamline their learning workflows. The result? Faster teacher feedback, fewer missed assignments, and 34% improvement in student engagement across all forms.</p>
+        <a href="#" class="btn-p" style="width:fit-content;">■ Read case study</a>
+      </div>
+    </div>
+  </div>
+</section>
+  
+ <!-- Latest Insights Section -->
+<section class="insights-section" id="insights">
+  <div class="insights-container">
+    <div class="insights-header">
+      <h2>Latest Insights</h2>
+      <a href="#" class="view-all">view all <span>→</span></a>
+    </div>
+
+    <div class="insights-carousel">
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+        <div class="insight-content">
+          <h3>The Future is Africa: Shaping AI-enabled EdTech for the Next Generation</h3>
+          <p class="insight-date">JANUARY 2026</p>
+          <p class="insight-author">By World Bank Education</p>
+          <a href="https://blogs.worldbank.org/en/education/the-future-is-africa--shaping-ai-enabled-edtech-for-skilling-the" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+        <div class="insight-content">
+          <h3>AI Can Transform Africa's Learning Crisis Into Development Opportunity</h3>
+          <p class="insight-date">DECEMBER 2025</p>
+          <p class="insight-author">By UNICEF Innocenti</p>
+          <a href="https://www.unicef.org/innocenti/stories/how-ai-can-transform-africas-learning-crisis-development-opportunity" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+        <div class="insight-content">
+          <h3>OECD Digital Education Outlook 2026: Exploring Generative AI in Education</h3>
+          <p class="insight-date">JANUARY 2026</p>
+          <p class="insight-author">By OECD Publishing</p>
+          <a href="https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+        <div class="insight-content">
+          <h3>7 Trends Shaping Africa's EdTech Revolution in 2026</h3>
+          <p class="insight-date">DECEMBER 2025</p>
+          <p class="insight-author">By Injini & Zawya</p>
+          <a href="https://www.zawya.com/en/world/africa/7-trends-shaping-africas-edtech-revolution-gj4j9u35" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+        <div class="insight-content">
+          <h3>Gates Foundation & ADQ: $40M Partnership for AI-Enabled Education in Sub-Saharan Africa</h3>
+          <p class="insight-date">DECEMBER 2025</p>
+          <p class="insight-author">By Gates Foundation</p>
+          <a href="https://www.gatesfoundation.org/ideas/media-center/press-releases/2025/12/education-systems-partnership" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+        <div class="insight-content">
+          <h3>African Schools Gear Up for the AI Revolution - UNESCO & UN News</h3>
+          <p class="insight-date">FEBRUARY 2025</p>
+          <p class="insight-author">By UN News</p>
+          <a href="https://news.un.org/en/story/2025/01/1159621" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
+        <div class="insight-content">
+          <h3>How AI-Powered Learning Platforms Are Revolutionizing Education in 2026</h3>
+          <p class="insight-date">DECEMBER 2025</p>
+          <p class="insight-author">By 101Blockchains</p>
+          <a href="https://101blockchains.com/ai-learning-platforms-in-education/" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #88d3f6 0%, #99e5ff 100%);"></div>
+        <div class="insight-content">
+          <h3>Realising AI in Africa's Education Systems - Strategy to Implementation</h3>
+          <p class="insight-date">AUGUST 2025</p>
+          <p class="insight-author">By CIO Africa</p>
+          <a href="https://cioafrica.co/realising-ai-in-africas-education-systems/" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-image" style="background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);"></div>
+        <div class="insight-content">
+          <h3>4 Ways AI Has Impacted Education - 2025 Report</h3>
+          <p class="insight-date">DECEMBER 2025</p>
+          <p class="insight-author">By Cengage Group</p>
+          <a href="https://www.cengagegroup.com/news/perspectives/2025/ais-impact-on-education-in-2025/" target="_blank" rel="noopener noreferrer" class="insight-link">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Discoveries Section -->
+  <div class="discoveries-container">
+    <div class="discoveries-header">
+      <h2>Related Discoveries</h2>
+    </div>
+
+    <div class="discoveries-grid">
+      <div class="discovery-item">
+        <a href="https://www.demandsage.com/ai-in-education-statistics/" target="_blank" rel="noopener noreferrer">
+          <h4>75 AI in Education Statistics: Global Trends & Facts 2026</h4>
+          <p class="discovery-date">January 2026</p>
+        </a>
+      </div>
+      <div class="discovery-item">
+        <a href="https://www.eschoolnews.com/innovative-teaching/2026/01/01/draft-2026-predictions/" target="_blank" rel="noopener noreferrer">
+          <h4>49 Predictions About EdTech, Innovation, and AI in 2026</h4>
+          <p class="discovery-date">January 2026</p>
+        </a>
+      </div>
+      <div class="discovery-item">
+        <a href="https://www.insidehighered.com/news/tech-innovation/artificial-intelligence/2026/01/05/5-predictions-how-ai-will-shape-higher-ed" target="_blank" rel="noopener noreferrer">
+          <h4>5 Predictions on How AI Will Shape Higher Ed in 2026</h4>
+          <p class="discovery-date">January 2026</p>
+        </a>
+      </div>
+      <div class="discovery-item">
+        <a href="https://sam-solutions.com/blog/ai-agents-for-education/" target="_blank" rel="noopener noreferrer">
+          <h4>AI Agents for Education: Revolutionizing Learning in 2025</h4>
+          <p class="discovery-date">November 2025</p>
+        </a>
+      </div>
+      <div class="discovery-item">
+        <a href="https://www.tekrevol.com/blogs/ai-in-education/" target="_blank" rel="noopener noreferrer">
+          <h4>AI in Education: How AI Is Transforming Education 2025</h4>
+          <p class="discovery-date">October 2025</p>
+        </a>
+      </div>
+      <div class="discovery-item">
+        <a href="https://medium.com/the-ai-and-education-studio/2025-wrap-up-ai-in-education-bf2eb58af85e" target="_blank" rel="noopener noreferrer">
+          <h4>2025 Wrap Up: AI in Education - What's Next for 2026</h4>
+          <p class="discovery-date">December 2025</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+ 
+<!-- SUGGESTION HUB -->
+<section class="sug-sec" id="suggestions">
+  <div class="sug-in">
+    <div>
+      <div class="sec-ey" style="color:var(--yellow);">■ Community</div>
+      <div class="sec-ti" style="color:var(--white);font-size:clamp(26px,3.8vw,48px);margin-bottom:18px;"><em>Suggestion</em><br>Hub</div>
+      <p style="color:#888;font-size:14px;line-height:1.7;max-width:380px;margin-bottom:28px;">Soma Tech is built by the community, for the community. Share ideas for new features, report bugs, or tell us what would make your learning experience better. Every voice shapes the platform.</p>
+      <div class="sf">
+        <div><div class="flbl">Your name</div><input class="fin" id="sName" type="text" placeholder="e.g. Tendai M."></div>
+        <div><div class="flbl">Category</div>
+          <select class="fin fsel" id="sCat">
+            <option value="feature">💡 Feature Request</option>
+            <option value="bug">🐛 Bug Report</option>
+            <option value="general">💬 General Feedback</option>
+            <option value="content">📚 Content / Curriculum</option>
+          </select>
+        </div>
+        <div><div class="flbl">Your idea or suggestion</div><textarea class="fin fta" id="sText" placeholder="Describe your idea…"></textarea></div>
+        <button class="sbtn" onclick="submitSug()">■ Submit suggestion →</button>
+      </div>
+    </div>
+    <div>
+      <div style="color:rgba(255,255,255,.4);font-family:'Space Mono',monospace;font-size:10px;margin-bottom:14px;letter-spacing:1px;">■ RECENT SUGGESTIONS</div>
+      <div class="sfeed" id="sfeed">
+        <div class="scard"><div class="sch"><div class="sav">T</div><div><div class="san">Tendai M.</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">Student</div></div><div class="scat" style="background:rgba(232,255,0,.12);color:var(--yellow);">💡 Feature</div></div><div class="st">Can Soma X have a flashcard mode? Like Anki but connected to my notes automatically. Would be great for revision before exams.</div><div class="sv"><button class="vb" onclick="vote(this)">▲ 24</button><span class="stm">2 days ago</span></div></div>
+        <div class="scard"><div class="sch"><div class="sav" style="background:#64a0dc;color:var(--white);">N</div><div><div class="san">Ngoni K.</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">Teacher</div></div><div class="scat" style="background:rgba(232,255,0,.12);color:var(--yellow);">💡 Feature</div></div><div class="st">A way for teachers to assign Soma X workspaces to students directly from the Connect dashboard — would save so much time.</div><div class="sv"><button class="vb" onclick="vote(this)">▲ 18</button><span class="stm">4 days ago</span></div></div>
+        <div class="scard"><div class="sch"><div class="sav" style="background:#2a9d5c;color:var(--white);">R</div><div><div class="san">Rudo C.</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">Parent</div></div><div class="scat" style="background:rgba(100,160,220,.15);color:#64a0dc;">💬 General</div></div><div class="st">I'd love weekly email summaries of my child's progress — not everyone checks the app daily.</div><div class="sv"><button class="vb" onclick="vote(this)">▲ 31</button><span class="stm">1 week ago</span></div></div>
+        <div class="scard"><div class="sch"><div class="sav" style="background:#7c3aed;color:var(--white);">F</div><div><div class="san">Farai D.</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">Student</div></div><div class="scat" style="background:rgba(220,80,80,.15);color:#e05252;">🐛 Bug</div></div><div class="st">Soma Browser sometimes blocks educational YouTube like Khan Academy in focus mode — needs a whitelist for trusted learning sites.</div><div class="sv"><button class="vb" onclick="vote(this)">▲ 42</button><span class="stm">1 week ago</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section class="merch-sec" id="merch">
+  <div class="merch-in">
+    <div class="mhead">
+      <div><div class="sec-ey" style="color:var(--yellow);">■ Soma Merch Store</div><div class="sec-ti" style="color:var(--white);margin-bottom:0;">Support our <em>mission</em><br>wear the movement</div></div>
+      <p style="color:#777;max-width:260px;font-size:13px;line-height:1.6;">Every purchase funds scholarships, school partnerships and product development across Zimbabwe.</p>
+    </div>
+    <div class="mgrid">
+      <div class="mcard">
+        <div class="mimg"><img src="images/img (6).png" alt="Soma Hoodie" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="mph" style="display:none;">🧥</div><div class="mbadge">Best Seller</div></div>
+        <div class="minfo"><div class="mname">Soma Tech Hoodie</div><div class="mdesc">Premium heavyweight hoodie with embroidered Soma logo. Black & yellow colourways.</div><div class="mfooter"><div class="mprice">$35</div><button class="atc" onclick="addToCart('Soma Tech Hoodie',35,'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=100&q=80','🧥')">+ Add</button></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mimg"><img src="images/img (4).png" alt="Windbreaker" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="mph" style="display:none;">🧤</div><div class="mbadge">New</div></div>
+        <div class="minfo"><div class="mname">Soma Windbreaker</div><div class="mdesc">Lightweight zip-up with reflective Soma wordmark. Perfect for the daily commute.</div><div class="mfooter"><div class="mprice">$48</div><button class="atc" onclick="addToCart('Soma Windbreaker',48,'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=100&q=80','🧤')">+ Add</button></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mimg"><img src="images/img (5).png" alt="Soma Tee" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="mph" style="display:none;">👕</div></div>
+        <div class="minfo"><div class="mname">Soma X Tee</div><div class="mdesc">Minimal acid yellow tee with Soma X logo. 100% organic cotton. Unisex fit.</div><div class="mfooter"><div class="mprice">$22</div><button class="atc" onclick="addToCart('Soma X Tee',22,'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=100&q=80','👕')">+ Add</button></div></div>
+      </div>
+      <div class="mcard">
+        <div class="mimg"><img src="images/img (1).png" alt="Soma Backpack" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="mph" style="display:none;">🎒</div><div class="mbadge">Limited</div></div>
+        <div class="minfo"><div class="mname">Soma Backpack</div><div class="mdesc">Durable 25L school backpack with padded laptop sleeve and Soma co-branded zips.</div><div class="mfooter"><div class="mprice">$55</div><button class="atc" onclick="addToCart('Soma Backpack',55,'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&q=80','🎒')">+ Add</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Download Section -->
+  <section id="download" class="fade-in">
+    <h2 class="section-title">Download Soma X and Z</h2>
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <p style="font-size: 1.2rem; color: #9ca3af; max-width: 600px; margin: 0 auto;">
+        Get ready for the future of Ai Education Technologies. Download Soma for your system below...
+      </p>
+    </div>
+    <div class="download-options">
+      <a href="#" class="download-btn">
+        <i class="fab fa-windows" style="font-size: 2rem; color: #0078d4;"></i>
+        <div>
+          <div style="font-weight: 600;">Windows</div>
+          <div style="font-size: 0.875rem; color: #9ca3af;">Coming Soon</div>
+        </div>
+      </a>
+      <a href="#" class="download-btn">
+        <i class="fab fa-apple" style="font-size: 2rem; color: #ffffff;"></i>
+        <div>
+          <div style="font-weight: 600;">macOS</div>
+          <div style="font-size: 0.875rem; color: #9ca3af;">Coming Soon</div>
+        </div>
+      </a>
+      <a href="#" class="download-btn">
+        <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #a855f7;"></i>
+        <div>
+          <div style="font-weight: 600;">Mobile</div>
+          <div style="font-size: 0.875rem; color: #9ca3af;">Coming Soon</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4><i class="fas fa-info-circle"></i> About Soma</h4>
+          <p style="color: #9ca3af; margin-bottom: 1rem;">
+            The browser built by students, for students. Empowering the next generation of learners with intelligent tools and distraction-free browsing.
+          </p>
+          <div class="social-links">
+            <a href="https://www.instagram.com//somabrowser"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com//somabrowser"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com//somabrowser"><i class="fab fa-discord"></i></a>
+            <a href="https://www.instagram.com//somabrowser"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4><i class="fas fa-download"></i> Product</h4>
+          <ul>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#about">Features</a></li>
+            <li><a href="#" onclick="openAIModal()">Try Soma AI</a></li>
+            <li><a href="#">System Requirements</a></li>
+            <li><a href="#">Release Notes</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4><i class="fas fa-users"></i> Community</h4>
+          <ul>
+            <li><a href="#suggestions">Suggestions Hub</a></li>
+            <li><a href="#">Join Team</a></li>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Beta Program</a></li>
+            <li><a href="#">Student Ambassador Program</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4><i class="fas fa-headset"></i> Support</h4>
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#donate">Donate</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;"><img src="images/logo 3.png" width="100px"></div>
+        <p>&copy; 2026 Soma. Built with <i class="fas fa-heart" style="color: #a855f7;"></i> by students, for students everywhere.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART MODAL -->
+<div class="cart-ov" id="cartOv" onclick="clo(event)">
+  <div class="cart-pan">
+    <div class="cph"><div class="cpt">Your Cart</div><button class="cpc" onclick="toggleCart()">✕</button></div>
+    <div id="cItems"><div class="cempty">Your cart is empty.<br><br>Support our mission by buying some merch!<br>Every purchase helps students in Zimbabwe 🎒</div></div>
+    <div id="cTotalRow" style="display:none;" class="ctr"><span class="ctl">Total</span><span class="ctp" id="cTotal">$0</span></div>
+    <button class="chkbtn" id="chkBtn" style="display:none;" onclick="checkout()">■ Checkout →</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const bg = document.querySelector('.animated-bg');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        bg.appendChild(particle);
+      }
+    }
+
+    // Countdown Timer
+    function updateCountdown() {
+      const targetDate = new Date('January 3, 2026 00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days.toString().padStart(3, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<h3 style="color: #a855f7;"> </h3>';
+      }
+    }
+
+    // Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // AI Modal Functions
+    function openAIModal() {
+      document.getElementById('aiModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAIModal() {
+      document.getElementById('aiModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (message) {
+        addChatMessage('You', message, '#6366f1', 'fas fa-user');
+        input.value = '';
+        
+        // Simulate AI response
+        setTimeout(() => {
+          const responses = [
+            "That's a great question! Let me help you with that.",
+            "I understand what you're looking for. Here's what I think...",
+            "Based on your question, I'd recommend exploring this topic further.",
+            "That's an interesting point! Soma AI is designed to help with exactly these kinds of queries.",
+            "I'm still learning, but I can definitely help you think through this problem."
+          ];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          addChatMessage('Soma AI', randomResponse, '#a855f7', 'fas fa-robot');
+        }, 1000);
+      }
+    }
+
+    function quickChat(message) {
+      document.getElementById('chatInput').value = message;
+      sendMessage();
+    }
+
+    function addChatMessage(sender, message, color, icon) {
+      const chatContainer = document.getElementById('chatContainer');
+      const messageDiv = document.createElement('div');
+      messageDiv.style.marginBottom = '1rem';
+      messageDiv.innerHTML = `<strong style="color: ${color};"><i class="${icon}"></i> ${sender}:</strong> ${message}`;
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function handleChatKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function submitAIFeedback() {
+      const feedback = document.getElementById('aiFeedback').value.trim();
+      if (feedback) {
+        alert('Thank you for your feedback! This helps us improve Soma AI.');
+        document.getElementById('aiFeedback').value = '';
+      }
+    }
+
+let cart=[];
+function toggleCart(){document.getElementById('cartOv').classList.toggle('open');}
+function clo(e){if(e.target===document.getElementById('cartOv'))toggleCart();}
+
+function addToCart(name,price,img,emoji){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty++;else cart.push({name,price,img,emoji,qty:1});
+  renderCart();showToast('■ '+name+' added');
+  if(!document.getElementById('cartOv').classList.contains('open'))toggleCart();
+}
+function removeFromCart(n){cart=cart.filter(i=>i.name!==n);renderCart();}
+
+function renderCart(){
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('cc').textContent=count;
+  const c=document.getElementById('cItems'),tr=document.getElementById('cTotalRow'),b=document.getElementById('chkBtn');
+  if(!cart.length){c.innerHTML='<div class="cempty">Your cart is empty.<br><br>Support our mission by buying some merch! 🎒</div>';tr.style.display='none';b.style.display='none';return;}
+  c.innerHTML=cart.map(it=>`<div class="ci"><div class="cii"><img src="${it.img}" alt="${it.name}" onerror="this.style.display='none';this.parentElement.textContent='${it.emoji}'"></div><div><div class="cin">${it.name}${it.qty>1?' ×'+it.qty:''}</div><div class="cip">$${it.price*it.qty}</div></div><button class="cir" onclick="removeFromCart('${it.name.replace(/'/g,"\\'")}')">✕</button></div>`).join('');
+  document.getElementById('cTotal').textContent='$'+total;tr.style.display='flex';b.style.display='block';
+}
+
+function checkout(){
+  alert('🎉 Thank you for supporting Soma Tech!\n\nYour purchase helps fund scholarships and schools across Zimbabwe. 🇿🇼\n\nFull payment integration coming soon!');
+  cart=[];renderCart();toggleCart();
+}
+
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+function submitSug(){
+  const n=document.getElementById('sName').value.trim();
+  const tx=document.getElementById('sText').value.trim();
+  const cat=document.getElementById('sCat').value;
+  if(!n||!tx){showToast('■ Please fill in name and suggestion');return;}
+  const cm={feature:{l:'💡 Feature',s:'background:rgba(232,255,0,.12);color:#E8FF00'},bug:{l:'🐛 Bug',s:'background:rgba(220,80,80,.15);color:#e05252'},general:{l:'💬 General',s:'background:rgba(100,160,220,.15);color:#64a0dc'},content:{l:'📚 Content',s:'background:rgba(100,160,220,.15);color:#64a0dc'}};
+  const c=cm[cat]||cm.general;
+  const cols=['#E8FF00','#64a0dc','#2a9d5c','#7c3aed','#e05252'];
+  const col=cols[Math.floor(Math.random()*cols.length)];
+  const tc=col==='#E8FF00'?'#0a0a0a':'#fff';
+  document.getElementById('sfeed').insertAdjacentHTML('afterbegin',`<div class="scard" style="border-color:rgba(232,255,0,.25)"><div class="sch"><div class="sav" style="background:${col};color:${tc};">${n.charAt(0).toUpperCase()}</div><div><div class="san">${n}</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">Community</div></div><div class="scat" style="${c.s}">${c.l}</div></div><div class="st">${tx}</div><div class="sv"><button class="vb" onclick="vote(this)">▲ 0</button><span class="stm">just now</span></div></div>`);
+  document.getElementById('sName').value='';document.getElementById('sText').value='';
+  showToast('■ Suggestion submitted — thank you!');
+}
+
+function vote(b){const v=b.classList.contains('voted'),n=parseInt(b.textContent.split(' ')[1])||0;b.textContent='▲ '+(v?n-1:n+1);b.classList.toggle('voted');}
+</script> 
+  <script>
+        // Donation Functions
+    function donate(amount) {
+      alert(`Thank you for considering a ${amount} donation! Payment integration coming soon.`);
+    }
+
+    function customDonate() {
+      const amount = document.querySelector('input[type="number"]').value;
+      if (amount && amount > 0) {
+        alert(`Thank you for considering a ${amount} donation! Payment integration coming soon.`);
+      }
+    }
+
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+      
+      // Observe all fade-in elements
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Close modal when clicking outside
+      window.onclick = function(event) {
+        const modal = document.getElementById('aiModal');
+        if (event.target === modal) {
+          closeAIModal();
+        }
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    // Changing text animation
+    const texts = ['learns', 'understands', 'adapts', 'works'];
+    let currentIndex = 0;
+    const changingTextElement = document.getElementById('changingText');
+
+    function changeText() {
+      currentIndex = (currentIndex + 1) % texts.length;
+      changingTextElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        changingTextElement.textContent = texts[currentIndex];
+        changingTextElement.style.opacity = '1';
+      }, 250);
+    }
+
+    // Change text every 3 seconds
+    setInterval(changeText, 3000);
+  </script>
+</body>
+</html>
